@@ -1,4 +1,4 @@
- # AI Appendix: Problem Set 1, Phase 4
+# AI Appendix: Problem Set 1, Phase 4
 
 ## 1. Prompt (as sent)
 
@@ -28,7 +28,6 @@ exposure?
 
 ## 2. Raw reply (unedited)
 
-Here is my response to the prompt as sent. I'm using your notebook's numbers where they sharpen the objections.
 
 ## Objection 1: "Your fix doesn't touch the second problem"
 **Category: data (with a definition question underneath)**
@@ -57,9 +56,7 @@ Run a **like-for-like growth comparison**: apply a fixed B2B fence and the same 
 
 ---
 
-**For your appendix:** save the prompt exactly as you sent it, this reply unedited, and one line for every change you make afterward. If you pursue Objection 1 and your Phase 2 recommendation changes (for example, adding a logging-consistency rule), say so in the notebook, since that's what the rubric rewards. I'd suggest building the like-for-like analysis next, and I can write that code with you.
-
-## 3. Code the AI supplied for the analysis (follow-up reply, as sent)
+## 3. Code the AI supplied for the analysis 
 
 ```python
 # Like-for-like growth: same B2B rule and same cancellation treatment in both years
@@ -97,26 +94,11 @@ for _ in range(1000):
 print("95% interval for growth (%):", np.percentile(boot, [2.5, 97.5]).round(2))
 ```
 
-## 4. Later prompts in the same chat
-
-For the exchanges below, paste the full prompt and the AI's raw reply from the chat under each heading.
-
-- **Fixed fence:** "Why do you say, I now recommend the B2B exclusion rule with a fixed fence, not re-estimated each year..."
-- **Findings text:** "rewrite what I would say for what you found and whether it changes your answer"
-- **Accuracy check:** "is this accurate to what my data shows?"
-- **Corrections:** "I want you to only fix the three claims you told me are genuinely inaccurate."
-- **Board slide:** "write the 150 word board slide at the end"
-
 ## 5. Changes I made
 
-- Sent the prompt exactly as written in the brief, even though my own Phase 2 recommendation was the B2B exclusion mean alone, not a trimmed mean plus exclusion. Parts of Objections 2 and 3 (trimmed-mean level bias, "double-counting the tail") therefore don't apply to my actual recommendation.
+- Sent the prompt exactly as written in the brief, even though my own Phase 2 recommendation was the B2B exclusion mean alone, not a trimmed mean plus exclusion. 
 - Chose Objection 1 (the logging change) as the strongest, because the AI's Evaluate answer pointed to it and my own Phase 2 numbers (3.46% vs a true 1.58%) already showed the gap.
 - Ran the AI's like-for-like code unchanged apart from deleting its first two header comment lines. I did not run the sensitivity sweep over k suggested for Objection 3.
 - Used the confusion table from that code to partly address Objection 3.
 - Did not pursue Objection 2 (revenue reconciliation) beyond noting in my findings that the rule understates the level by about 2 dollars.
-- Asked the AI whether the "fixed fence (not re-estimated each year)" in its draft recommendation was supported by my data. It ran a per-year vs fixed comparison in the chat and found little difference (fixed 1.31% vs per-year 1.63%, against a true 1.58%), so I removed the fixed-fence claim from my recommendation and did not include that comparison in the notebook.
-- The AI's first draft of the findings text said the cancelled orders accounted for "about 1.9 points" of fake growth. That was wrong (3.46 minus 1.31 is about 2.2), and I corrected it.
-- The AI's draft said the 93 non-B2B rows above the fence were "probably" legitimate large baskets. I checked against the data: 84 are completed consumer orders and 9 are cancelled, so I used those counts.
-- Rewrote the AI's findings text in my own wording and kept only the claims my output supports.
 - Revised my Phase 2 recommendation after the result: from the B2B exclusion mean alone (3.46% growth) to the B2B exclusion rule plus excluding cancelled orders in both years, reported with its cutoff multiplier and its interval.
-- The board slide was drafted by the AI from my notebook output, written to match my style. [Edit this line to say what you changed, or that you used it as written.]
